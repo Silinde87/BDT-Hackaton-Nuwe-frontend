@@ -67,6 +67,7 @@ export default function CardRegPage() {
 						name="cardNumber"
 						autoComplete="off"
 						className={styles.formInput}
+						placeholder="1234 1234 1234 1234"
 					></input>
 				</div>
 				<div className={styles.formGroup}>
@@ -77,6 +78,7 @@ export default function CardRegPage() {
 						name="secretCode"
 						autoComplete="off"
 						className={styles.formInput}
+						placeholder="CVC"
 					></input>
 				</div>
 				<Button type={"submit"} text={"Guardar y continuar"} />

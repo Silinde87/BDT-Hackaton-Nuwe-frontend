@@ -10,6 +10,11 @@ const SCButton = styled.button`
     font-family: inter-regular;
     margin-top: 20px;
     font-size: 15px;
+    transition: all 0.3s;
+
+    &:hover{
+        box-shadow: 0px 0px 3px 3px rgba(106,110,120, 0.2);
+    }
 `;
 
 export default SCButton;

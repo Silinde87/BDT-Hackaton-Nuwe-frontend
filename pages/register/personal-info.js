@@ -1,6 +1,6 @@
-import Image from "next/image";
 import React, { useState } from "react";
 import Button from "../../components/Button/Button";
+import GoogleButton from "../../components/GoogleButton/GoogleButton";
 import NavBar from "../../components/NavBar/NavBar";
 import Title from "../../components/Title/Title";
 import styles from "../../styles/Register.module.css";
@@ -117,13 +117,8 @@ export default function PersonalInfoRegPage() {
 			<div className={styles.formSeparator}>
 				<span className={styles.formSeparatorLabel}>O</span>
 			</div>
-			<Image
-				id="social-login-img"
-				src="/images/google-social-login.png"
-				alt="Google-social-login"
-				height={92}
-				width={382}
-			/>
+			<GoogleButton />
+
 		</main>
 	);
 }

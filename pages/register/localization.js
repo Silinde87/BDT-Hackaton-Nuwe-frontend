@@ -76,6 +76,7 @@ export default function LocalizationRegPage() {
 						max="999999999"
 						autoComplete="off"
 						className={styles.formInput}
+						placeholder="e.g. 666 123 123"
 					></input>
 				</div>
 				<div className={styles.formGroup}>

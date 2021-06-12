@@ -30,6 +30,7 @@ const SCHomeCard = styled.div`
 
 	.text-container h4 {
 		font-family: inter-bold;
+        font-weight: 300;
 	}
     
     .text-container p{
