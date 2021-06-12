@@ -5,6 +5,8 @@ import SecureLabelInfo from "../../components/SecureLabelInfo/SecureLabelInfo";
 import Title from "../../components/Title/Title";
 import countries from "../../countries.json";
 import styles from "../../styles/Register.module.css";
+import { useRouter } from "next/router";
+import { showErrorMessage } from "../../utils/handleToast";
 
 const PHONE_PATTERN = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
 
@@ -31,6 +33,7 @@ const validators = {
 export default function LocalizationRegPage() {
 	const [fields, setFields] = useState({ phone: "", address: "", country: "" });
 	const [errors, setErrors] = useState({ phone: null, address: null, country: null });
+	const router = useRouter();
 
 	//Returns if there is an error on any input
 	const isValid = () => {
@@ -41,7 +44,9 @@ export default function LocalizationRegPage() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (isValid()) {
-			//todo
+			router.push("/register/card");
+		} else {
+			showErrorMessage("Algo ha ido mal. Debes rellenar los campos correctamente.", "❌");
 		}
 	};
 
@@ -78,6 +83,7 @@ export default function LocalizationRegPage() {
 						className={styles.formInput}
 						placeholder="e.g. 666 123 123"
 					></input>
+					{errors.phone && <p className={styles.formError}>{errors.phone}</p>}
 				</div>
 				<div className={styles.formGroup}>
 					<label htmlFor="address" className={styles.formLabel}>Dirección</label>
@@ -89,6 +95,7 @@ export default function LocalizationRegPage() {
 						autoComplete="off"
 						className={styles.formInput}
 					></input>
+					{errors.address && <p className={styles.formError}>{errors.address}</p>}
 				</div>
 				<div className={styles.formGroup}>
 					<label htmlFor="country" className={styles.formLabel}>País de residencia</label>
@@ -104,6 +111,7 @@ export default function LocalizationRegPage() {
 							);
 						})}
 					</select>
+					{errors.country && <p className={styles.formError}>{errors.country}</p>}
 				</div>
 				<Button type={"submit"} text={"Guardar y continuar"} />
 			</form>

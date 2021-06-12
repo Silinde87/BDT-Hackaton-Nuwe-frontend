@@ -4,6 +4,9 @@ import GoogleButton from "../../components/GoogleButton/GoogleButton";
 import NavBar from "../../components/NavBar/NavBar";
 import Title from "../../components/Title/Title";
 import styles from "../../styles/Register.module.css";
+import { saveUser } from "../../utils/handleUser";
+import { showErrorMessage } from "../../utils/handleToast";
+import { useRouter } from "next/router";
 
 const EMAIL_PATTERN =
 	/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
@@ -12,25 +15,34 @@ const EMAIL_PATTERN =
 const validators = {
 	name: (value) => {
 		let message;
-		if (!value) message = "El nombre es obligatorio";
+		if (!value) message = "El nombre es obligatorio.";
+		else if (value.length < 3) message = "Debe tener al menos 3 carácteres.";
 		return message;
 	},
 	email: (value) => {
 		let message;
-		if (!value) message = "El email es obligatorio";
-		else if (!EMAIL_PATTERN.test(value)) message = "Email no válido";
+		if (!value) message = "El email es obligatorio.";
+		else if (!EMAIL_PATTERN.test(value)) message = "Email no válido.";
 		return message;
 	},
 	password: (value) => {
 		let message;
 		if (!value) message = "La contraseña es obligatoria";
+		else if (value.length < 6) message = "Debe tener al menos 6 carácteres.";
 		return message;
 	},
+	conditions: (value) => {		
+		let message;
+		console.log(value);
+		if(!value) message = "Debes aceptar los términos";
+		return message;
+	}
 };
 
 export default function PersonalInfoRegPage() {
-	const [fields, setFields] = useState({ name: "", email: "", password: "" });
-	const [errors, setErrors] = useState({ name: null, email: null, password: null });
+	const [fields, setFields] = useState({ name: "", email: "", password: "", conditions: "" });
+	const [errors, setErrors] = useState({ name: null, email: null, password: null, conditions: null });
+	const router = useRouter();
 
 	//Returns if there is an error on any input
 	const isValid = () => {
@@ -40,15 +52,27 @@ export default function PersonalInfoRegPage() {
 	//Handles forms submit and check if all fields are valid.
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const { name, email } = fields;
+		const { name, email, password, conditions } = fields;
 		if (isValid()) {
-			//todo
+			if (saveUser(name, email, password)) {
+				router.push("/register/localization");
+			} else {
+				showErrorMessage(
+					"El correo electrónico introducido ya está en uso. Por favor, utiliza otro.",
+					"❌"
+				);
+			}
+		} else {
+			showErrorMessage("Algo ha ido mal. Debes rellenar los campos correctamente.", "❌");
 		}
 	};
 
 	//Handles input changes setting fields and errors states
 	const handleChange = (e) => {
-		const { name, value } = e.target;
+		let { name, value } = e.target;
+
+		if(e.target.type === "checkbox") value = e.target.checked;
+
 		setFields({
 			...fields,
 			[name]: value,
@@ -81,6 +105,7 @@ export default function PersonalInfoRegPage() {
 						autoComplete="off"
 						className={styles.formInput}
 					></input>
+					{errors.name && <p className={styles.formError}>{errors.name}</p>}
 				</div>
 				<div className={styles.formGroup}>
 					<label htmlFor="email" className={styles.formLabel}>
@@ -94,6 +119,7 @@ export default function PersonalInfoRegPage() {
 						autoComplete="off"
 						className={styles.formInput}
 					></input>
+					{errors.email && <p className={styles.formError}>{errors.email}</p>}
 				</div>
 				<div className={styles.formGroup}>
 					<label htmlFor="password" className={styles.formLabel}>
@@ -107,10 +133,14 @@ export default function PersonalInfoRegPage() {
 						autoComplete="off"
 						className={styles.formInput}
 					></input>
+					{errors.password && <p className={styles.formError}>{errors.password}</p>}
 				</div>
-				<div>
-					<input type="checkbox" id="check-conditions" />
-					<label htmlFor="check-conditions" className={styles.formLabelCheckbox}>Acepto los términos y condiciones</label>
+				<div className={styles.formCheckGroup}>
+					<input type="checkbox" id="check-conditions" name="conditions" onChange={handleChange} />
+					<label htmlFor="check-conditions" className={styles.formLabelCheckbox}>
+						Acepto los términos y condiciones
+					</label>
+					{errors.conditions && <p className={styles.formErrorCheckbox}>{errors.conditions}</p>}
 				</div>
 				<Button type={"submit"} text={"Registrar cuenta"} />
 			</form>
@@ -118,7 +148,6 @@ export default function PersonalInfoRegPage() {
 				<span className={styles.formSeparatorLabel}>O</span>
 			</div>
 			<GoogleButton />
-
 		</main>
 	);
 }

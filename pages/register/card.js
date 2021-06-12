@@ -4,6 +4,8 @@ import NavBar from "../../components/NavBar/NavBar";
 import SecureLabelInfo from "../../components/SecureLabelInfo/SecureLabelInfo";
 import Title from "../../components/Title/Title";
 import styles from "../../styles/Register.module.css";
+import { showErrorMessage, showSucessMessage } from "../../utils/handleToast";
+import router from "next/router";
 
 //Fields validators
 const validators = {
@@ -16,7 +18,7 @@ const validators = {
 	secretCode: (value) => {
 		let message;
 		if (!value) message = "El código secreto es obligatorio";
-        else if (value.length !== 3) message = "Código no válido";
+		else if (value.length !== 3) message = "Código no válido";
 		return message;
 	},
 };
@@ -31,10 +33,13 @@ export default function CardRegPage() {
 	};
 
 	//Handles forms submit and check if all fields are valid.
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (isValid()) {
-			//todo
+			await showSucessMessage("Yeah!");
+			router.push("/");
+		} else {
+			showErrorMessage("Algo ha ido mal. Debes rellenar los campos correctamente.", "❌");
 		}
 	};
 
@@ -60,7 +65,9 @@ export default function CardRegPage() {
 			/>
 			<form onSubmit={handleSubmit}>
 				<div className={styles.formGroup}>
-					<label htmlFor="cardNumber" className={styles.formLabel}>Número de tarjeta</label>
+					<label htmlFor="cardNumber" className={styles.formLabel}>
+						Número de tarjeta
+					</label>
 					<input
 						type="number"
 						onChange={handleChange}
@@ -69,9 +76,12 @@ export default function CardRegPage() {
 						className={styles.formInput}
 						placeholder="1234 1234 1234 1234"
 					></input>
+					{errors.cardNumber && <p className={styles.formError}>{errors.cardNumber}</p>}
 				</div>
 				<div className={styles.formGroup}>
-					<label htmlFor="secretCode" className={styles.formLabel}>Código secreto</label>
+					<label htmlFor="secretCode" className={styles.formLabel}>
+						Código secreto
+					</label>
 					<input
 						type="text"
 						onChange={handleChange}
@@ -80,10 +90,11 @@ export default function CardRegPage() {
 						className={styles.formInput}
 						placeholder="CVC"
 					></input>
+					{errors.secretCode && <p className={styles.formError}>{errors.secretCode}</p>}
 				</div>
 				<Button type={"submit"} text={"Guardar y continuar"} />
 			</form>
-            <SecureLabelInfo />
+			<SecureLabelInfo />
 		</main>
 	);
 }

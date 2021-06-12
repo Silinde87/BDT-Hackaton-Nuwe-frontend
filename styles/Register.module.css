@@ -4,7 +4,10 @@
 .formGroup {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 20px;
+	margin-bottom: 35px;
+}
+.formCheckGroup{
+	margin-bottom: 15px;
 }
 .formLabel {
 	margin-bottom: 10px;
@@ -44,4 +47,16 @@
 	background-color: white;
 	padding: 0px 10px;
 	color: var(--light-gray);
+}
+.formError{
+	padding-left: 10px;
+	position: absolute;
+	transform: translate(0px, 85px);
+	color: var(--error-red);
+}
+.formErrorCheckbox{
+	padding-left: 10px;
+	position: absolute;
+	transform: translate(0px, 5px);
+	color: var(--error-red);
 }

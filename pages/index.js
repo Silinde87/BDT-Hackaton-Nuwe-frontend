@@ -10,10 +10,8 @@ export default function Home() {
 			<Head>
 				<title>BDT Hackaton - Pau Rodriguez</title>
 				<meta name="description" content="BDT Hackaton by Pau Rodríguez" />
-				<
-					link rel="icon" href="/icons/favicon.ico" />
+				<link rel="icon" href="/icons/favicon.ico" />
 			</Head>
-
 			<main className={styles.main}>
 				<Title
 					title={"¡Únete a la comunidad!"}

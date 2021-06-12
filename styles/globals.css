@@ -45,6 +45,7 @@ p,h1,h2,h3,h4{
   --light-gray: rgb(136,146,164);
   --dark-gray: rgb(106,110,120);
   --main-green: rgb(95,145,83);
+  --error-red: #e63946;
 }
 
 p{
