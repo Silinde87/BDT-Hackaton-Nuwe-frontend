@@ -53,10 +53,12 @@
 	position: absolute;
 	transform: translate(0px, 85px);
 	color: var(--error-red);
+	font-size: 14px;
 }
 .formErrorCheckbox{
 	padding-left: 10px;
 	position: absolute;
 	transform: translate(0px, 5px);
 	color: var(--error-red);
+	font-size: 14px;
 }

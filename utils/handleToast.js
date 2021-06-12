@@ -1,8 +1,8 @@
 import toast from "react-hot-toast";
 
 export const showErrorMessage = (message, icon) => {
-    toast.error("Algo ha ido mal. Debes rellenar los campos correctamente.", {
-        icon: "❌",
+    toast.error(message, {
+        icon: icon,
         style: {
             borderRadius: "20px",
             background: "#333",
@@ -11,7 +11,7 @@ export const showErrorMessage = (message, icon) => {
     });
 }
 
-export const showSucessMessage = (message) => {
+export const showSucessMessage = () => {
     return toast.promise(
         fakePromiseDelay(),
          {

@@ -7,11 +7,6 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
 	return (
 		<div className={styles.container}>
-			<Head>
-				<title>BDT Hackaton - Pau Rodriguez</title>
-				<meta name="description" content="BDT Hackaton by Pau Rodríguez" />
-				<link rel="icon" href="/icons/favicon.ico" />
-			</Head>
 			<main className={styles.main}>
 				<Title
 					title={"¡Únete a la comunidad!"}
@@ -34,7 +29,7 @@ export default function Home() {
 				/>
 				<p className={styles.linkContainer}>
 					Ya tienes una cuenta?{" "}
-					<Link href="/login">
+					<Link href="/">
 						<a className={styles.link}>Inicia sesión</a>
 					</Link>
 				</p>

@@ -33,7 +33,6 @@ const validators = {
 	},
 	conditions: (value) => {		
 		let message;
-		console.log(value);
 		if(!value) message = "Debes aceptar los términos";
 		return message;
 	}
@@ -45,7 +44,7 @@ export default function PersonalInfoRegPage() {
 	const router = useRouter();
 
 	//Returns if there is an error on any input
-	const isValid = () => {
+	const isValid = () => {		
 		return !Object.keys(errors).some((key) => errors[key] !== undefined);
 	};
 
@@ -53,10 +52,10 @@ export default function PersonalInfoRegPage() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const { name, email, password, conditions } = fields;
-		if (isValid()) {
-			if (saveUser(name, email, password)) {
+		if (isValid()) {			
+			if (saveUser(name, email, password)) {				
 				router.push("/register/localization");
-			} else {
+			} else {				
 				showErrorMessage(
 					"El correo electrónico introducido ya está en uso. Por favor, utiliza otro.",
 					"❌"

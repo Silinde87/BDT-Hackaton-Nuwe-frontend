@@ -1,7 +1,5 @@
 import jsSHA from "jssha";
 
-//const localStorage = window.localStorage;
-
 export const saveUser = (name, email, password) => {
 	const users = getUsers();
 	let newUsers = [];
@@ -32,6 +30,5 @@ const calculateHash = (password) => {
 };
 
 const userExists = (email, users) => {
-	console.log(email, users);
 	return users.some((user) => user.email === email);
 };
