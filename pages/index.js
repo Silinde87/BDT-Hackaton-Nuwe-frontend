@@ -10,7 +10,8 @@ export default function Home() {
 			<Head>
 				<title>BDT Hackaton - Pau Rodriguez</title>
 				<meta name="description" content="BDT Hackaton by Pau Rodríguez" />
-				<link rel="icon" href="/icons/favicon.ico" />
+				<
+					link rel="icon" href="/icons/favicon.ico" />
 			</Head>
 
 			<main className={styles.main}>
@@ -18,20 +19,25 @@ export default function Home() {
 					title={"¡Únete a la comunidad!"}
 					label={"Para empezar, dinos que cuenta te gustaría abrir."}
 				/>
-				<HomeCard
-					icon={"Polygon 3-1.png"}
-					title={"Developers"}
-					text={"Cuenta personas para entrar en el mundo dev"}
-				/>
+				<Link href="/register/personal-info">
+					<a>
+						<HomeCard
+							icon={"Polygon 3-1.png"}
+							title={"Developers"}
+							text={"Cuenta personas para entrar en el mundo dev"}
+						/>					
+
+					</a>
+				</Link>
 				<HomeCard
 					icon={"Polygon 3.png"}
 					title={"Business"}
 					text={"Tienes o perteneces a una compañía"}
 				/>
-				<p>
+				<p className={styles.linkContainer}>
 					Ya tienes una cuenta?{" "}
 					<Link href="/login">
-						<a>Inicia sesión</a>
+						<a className={styles.link}>Inicia sesión</a>
 					</Link>
 				</p>
 			</main>

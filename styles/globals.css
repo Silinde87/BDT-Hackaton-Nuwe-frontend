@@ -1,12 +1,15 @@
+/* RESETS */
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: inter-regular;
   height: 100vh;
+  width: 100vw;
 }
 #__next{
   height: 100vh;
+  width: 100vw;
 }
 
 a {
@@ -16,6 +19,11 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+p,h1,h2,h3,h4{
+  margin: 0;
+  padding: 0;
 }
 
 /* FONTS */
@@ -30,4 +38,16 @@ a {
 @font-face {
   font-family: "inter-light";
   src: url("/fonts/Inter/Inter-Light.ttf");
+}
+
+/* VARIABLES */
+:root{
+  --light-gray: rgb(137,146,164);
+  --dark-gray: rgb(106,110,120);
+  --main-green: rgb(95,145,83);
+}
+
+p{
+  color: var(--light-gray);
+  font-family: inter-light;
 }

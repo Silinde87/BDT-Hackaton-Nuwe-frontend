@@ -1,0 +1,11 @@
+.formSeparator{
+    height: 12px;
+    margin: 20px 0 32px;
+    text-align: center;
+    border-bottom: 1px solid #e4e5e7;
+	font-size: 1.4rem;
+}
+.formSeparatorLabel{
+	background-color: white;
+	padding: 0px 10px;
+}
