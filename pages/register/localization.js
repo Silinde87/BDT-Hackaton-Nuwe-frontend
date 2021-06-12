@@ -4,6 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import SecureLabelInfo from "../../components/SecureLabelInfo/SecureLabelInfo";
 import Title from "../../components/Title/Title";
 import countries from "../../countries.json";
+import styles from "../../styles/Register.module.css";
 
 const PHONE_PATTERN = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
 
@@ -57,7 +58,7 @@ export default function LocalizationRegPage() {
 		});
 	};
 	return (
-		<main>
+		<main className={styles.main}>
 			<NavBar step={"02"} page={"Localización"} href={"/register/personal-info"} />
 			<Title
 				title={"Completa tu perfil!"}
@@ -65,8 +66,8 @@ export default function LocalizationRegPage() {
                     necesitamos la siguiente información`}
 			/>
 			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor="name">Número de teléfono</label>
+				<div className={styles.formGroup}>
+					<label htmlFor="name" className={styles.formLabel}>Número de teléfono</label>
 					<input
 						type="number"
 						onChange={handleChange}
@@ -74,21 +75,23 @@ export default function LocalizationRegPage() {
 						min="1"
 						max="999999999"
 						autoComplete="off"
+						className={styles.formInput}
 					></input>
 				</div>
-				<div>
-					<label htmlFor="address">Dirección</label>
+				<div className={styles.formGroup}>
+					<label htmlFor="address" className={styles.formLabel}>Dirección</label>
 					<input
 						type="text"
 						placeholder="Introduce la dirección completa"
 						onChange={handleChange}
 						name="address"
 						autoComplete="off"
+						className={styles.formInput}
 					></input>
 				</div>
-				<div>
-					<label htmlFor="country">País de residencia</label>
-					<select id="country" name="country" onChange={handleChange}>
+				<div className={styles.formGroup}>
+					<label htmlFor="country" className={styles.formLabel}>País de residencia</label>
+					<select id="country" name="country" onChange={handleChange} className={styles.formInput}>
 						<option value="" defaultValue>
 							Selecciona uno
 						</option>

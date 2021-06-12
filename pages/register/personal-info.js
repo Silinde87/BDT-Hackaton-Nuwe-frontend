@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Button from "../../components/Button/Button";
 import NavBar from "../../components/NavBar/NavBar";
 import Title from "../../components/Title/Title";
-import styles from "../../styles/Personal.module.css";
+import styles from "../../styles/Register.module.css";
 
 const EMAIL_PATTERN =
 	/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
@@ -42,7 +42,7 @@ export default function PersonalInfoRegPage() {
 		e.preventDefault();
 		const { name, email } = fields;
 		if (isValid()) {
-			//todo		
+			//todo
 		}
 	};
 
@@ -60,47 +60,57 @@ export default function PersonalInfoRegPage() {
 	};
 
 	return (
-		<main>
-			<NavBar step={"01"} page={"Personal Info."} href={"/"}/>
+		<main className={styles.main}>
+			<NavBar step={"01"} page={"Personal Info."} href={"/"} />
 			<Title
 				title={"Registra tu cuenta individual"}
 				label={`Para poder revisar que se trata de una cuenta real, 
                     necesitamos la siguiente información`}
 			/>
+			<div className={styles.formSeparator}></div>
 			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor="name">Nombre completo</label>
+				<div className={styles.formGroup}>
+					<label htmlFor="name" className={styles.formLabel}>
+						Nombre completo
+					</label>
 					<input
 						type="text"
 						placeholder="Introduce tu nombre"
 						onChange={handleChange}
 						name="name"
 						autoComplete="off"
+						className={styles.formInput}
 					></input>
 				</div>
-				<div>
-					<label htmlFor="email">Dirección Email</label>
+				<div className={styles.formGroup}>
+					<label htmlFor="email" className={styles.formLabel}>
+						Dirección Email
+					</label>
 					<input
 						type="email"
 						placeholder="Introduce tu email"
 						onChange={handleChange}
 						name="email"
 						autoComplete="off"
+						className={styles.formInput}
 					></input>
 				</div>
-				<div>
-					<label htmlFor="password">Contraseña</label>
+				<div className={styles.formGroup}>
+					<label htmlFor="password" className={styles.formLabel}>
+						Contraseña
+					</label>
 					<input
 						type="password"
 						placeholder="Introduce tu constraseña"
 						onChange={handleChange}
 						name="password"
 						autoComplete="off"
+						className={styles.formInput}
 					></input>
 				</div>
 				<div>
 					<input type="checkbox" id="check-conditions" />
-					<label htmlFor="check-conditions">Acepto los términos y condiciones</label>
+					<label htmlFor="check-conditions" className={styles.formLabelCheckbox}>Acepto los términos y condiciones</label>
 				</div>
 				<Button type={"submit"} text={"Registrar cuenta"} />
 			</form>

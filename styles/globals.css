@@ -42,7 +42,7 @@ p,h1,h2,h3,h4{
 
 /* VARIABLES */
 :root{
-  --light-gray: rgb(137,146,164);
+  --light-gray: rgb(136,146,164);
   --dark-gray: rgb(106,110,120);
   --main-green: rgb(95,145,83);
 }

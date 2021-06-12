@@ -3,8 +3,7 @@ import Button from "../../components/Button/Button";
 import NavBar from "../../components/NavBar/NavBar";
 import SecureLabelInfo from "../../components/SecureLabelInfo/SecureLabelInfo";
 import Title from "../../components/Title/Title";
-
-const PHONE_PATTERN = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
+import styles from "../../styles/Register.module.css";
 
 //Fields validators
 const validators = {
@@ -52,7 +51,7 @@ export default function CardRegPage() {
 		});
 	};
 	return (
-		<main>
+		<main className={styles.main}>
 			<NavBar step={"03"} page={"Verificación por tarjeta"} href={"/register/localization"} />
 			<Title
 				title={"Completa tu perfil!"}
@@ -60,22 +59,24 @@ export default function CardRegPage() {
                     necesitamos la siguiente información`}
 			/>
 			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor="cardNumber">Número de tarjeta</label>
+				<div className={styles.formGroup}>
+					<label htmlFor="cardNumber" className={styles.formLabel}>Número de tarjeta</label>
 					<input
 						type="number"
 						onChange={handleChange}
 						name="cardNumber"
 						autoComplete="off"
+						className={styles.formInput}
 					></input>
 				</div>
-				<div>
-					<label htmlFor="secretCode">Código secreto</label>
+				<div className={styles.formGroup}>
+					<label htmlFor="secretCode" className={styles.formLabel}>Código secreto</label>
 					<input
 						type="text"
 						onChange={handleChange}
 						name="secretCode"
 						autoComplete="off"
+						className={styles.formInput}
 					></input>
 				</div>
 				<Button type={"submit"} text={"Guardar y continuar"} />

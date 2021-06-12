@@ -6,6 +6,10 @@ const SCTitle = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     margin-bottom: 10px;
+
+    h1{
+        font-size: 25px;
+    }
 `;
 
 

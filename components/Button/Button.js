@@ -1,7 +1,8 @@
 import React from 'react'
+import SCButton from './Button.styled'
 
 export default function Button({text, type}) {
     return (
-        <button type={type}>{text}</button>
+        <SCButton type={type}>{text}</SCButton>
     )
 }
