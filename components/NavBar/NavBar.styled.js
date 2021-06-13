@@ -3,7 +3,8 @@ import styled from "styled-components";
 const SCNavBar = styled.nav`
     display: flex;
     justify-content: space-between;
-    padding: 7px;
+    margin-bottom: 10px;
+    height: 35px;
 
     .link-back{
         display: flex;

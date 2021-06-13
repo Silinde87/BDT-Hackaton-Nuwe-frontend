@@ -3,6 +3,7 @@ import Button from "../../components/Button/Button";
 import NavBar from "../../components/NavBar/NavBar";
 import SecureLabelInfo from "../../components/SecureLabelInfo/SecureLabelInfo";
 import Title from "../../components/Title/Title";
+import FrontInfoText from "../../components/FrontInfoText/FrontInfoText";
 import countries from "../../countries.json";
 import styles from "../../styles/Register.module.css";
 import { useRouter } from "next/router";
@@ -64,58 +65,61 @@ export default function LocalizationRegPage() {
 	};
 	return (
 		<main className={styles.main}>
-			<NavBar step={"02"} page={"Localización"} href={"/register/personal-info"} />
-			<Title
-				title={"Completa tu perfil!"}
-				label={`Para poder revisar que se trata de una cuenta real, 
-                    necesitamos la siguiente información`}
-			/>
-			<form onSubmit={handleSubmit}>
-				<div className={styles.formGroup}>
-					<label htmlFor="name" className={styles.formLabel}>Número de teléfono</label>
-					<input
-						type="number"
-						onChange={handleChange}
-						name="phone"
-						min="1"
-						max="999999999"
-						autoComplete="off"
-						className={styles.formInput}
-						placeholder="e.g. 666 123 123"
-					></input>
-					{errors.phone && <p className={styles.formError}>{errors.phone}</p>}
-				</div>
-				<div className={styles.formGroup}>
-					<label htmlFor="address" className={styles.formLabel}>Dirección</label>
-					<input
-						type="text"
-						placeholder="Introduce la dirección completa"
-						onChange={handleChange}
-						name="address"
-						autoComplete="off"
-						className={styles.formInput}
-					></input>
-					{errors.address && <p className={styles.formError}>{errors.address}</p>}
-				</div>
-				<div className={styles.formGroup}>
-					<label htmlFor="country" className={styles.formLabel}>País de residencia</label>
-					<select id="country" name="country" onChange={handleChange} className={styles.formInput}>
-						<option value="" defaultValue>
-							Selecciona uno
-						</option>
-						{countries.map(({ code, name }) => {
-							return (
-								<option key={code} value={name}>
-									{name}
-								</option>
-							);
-						})}
-					</select>
-					{errors.country && <p className={styles.formError}>{errors.country}</p>}
-				</div>
-				<Button type={"submit"} text={"Guardar y continuar"} />
-			</form>
-			<SecureLabelInfo />
+			<FrontInfoText />
+			<section className={styles.formContainer}>
+				<NavBar step={"02"} page={"Localización"} href={"/register/personal-info"} />
+				<Title
+					title={"Completa tu perfil!"}
+					label={`Para poder revisar que se trata de una cuenta real, 
+						necesitamos la siguiente información`}
+				/>
+				<form onSubmit={handleSubmit} className={styles.form}>
+					<div className={styles.formGroup}>
+						<label htmlFor="name" className={styles.formLabel}>Número de teléfono</label>
+						<input
+							type="number"
+							onChange={handleChange}
+							name="phone"
+							min="1"
+							max="999999999"
+							autoComplete="off"
+							className={styles.formInput}
+							placeholder="e.g. 666 123 123"
+						></input>
+						{errors.phone && <p className={styles.formError}>{errors.phone}</p>}
+					</div>
+					<div className={styles.formGroup}>
+						<label htmlFor="address" className={styles.formLabel}>Dirección</label>
+						<input
+							type="text"
+							placeholder="Introduce la dirección completa"
+							onChange={handleChange}
+							name="address"
+							autoComplete="off"
+							className={styles.formInput}
+						></input>
+						{errors.address && <p className={styles.formError}>{errors.address}</p>}
+					</div>
+					<div className={styles.formGroup}>
+						<label htmlFor="country" className={styles.formLabel}>País de residencia</label>
+						<select id="country" name="country" onChange={handleChange} className={styles.formInput}>
+							<option value="" defaultValue>
+								Selecciona uno
+							</option>
+							{countries.map(({ code, name }) => {
+								return (
+									<option key={code} value={name}>
+										{name}
+									</option>
+								);
+							})}
+						</select>
+						{errors.country && <p className={styles.formError}>{errors.country}</p>}
+					</div>
+					<Button type={"submit"} text={"Guardar y continuar"} />
+				</form>
+				<SecureLabelInfo />
+			</section>
 		</main>
 	);
 }

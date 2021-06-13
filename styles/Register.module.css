@@ -1,16 +1,18 @@
 .main {
-	padding: 0px 15px;
+	padding: 10px 30px;
+	display: flex;
+	max-height: 100vh;
+}
+.formContainer{
+	width: 100%;
 }
 .formGroup {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 35px;
 }
-.formCheckGroup{
-	margin-bottom: 15px;
-}
 .formLabel {
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 	color: var(--dark-gray);
 }
 .formLabelCheckbox {
@@ -38,14 +40,14 @@
 }
 .formSeparator {
 	height: 9px;
-	margin: 20px 0 32px;
+	margin: 5px 0 15px;
 	text-align: center;
 	border-bottom: 1px solid #e4e5e7;
 	font-size: 14px;
 }
 .formSeparatorLabel {
 	background-color: white;
-	padding: 0px 10px;
+	padding: 0px 35px;
 	color: var(--light-gray);
 }
 .formError{
@@ -53,12 +55,50 @@
 	position: absolute;
 	transform: translate(0px, 85px);
 	color: var(--error-red);
-	font-size: 14px;
+	font-size: 13px;
 }
 .formErrorCheckbox{
 	padding-left: 10px;
 	position: absolute;
-	transform: translate(0px, 5px);
+	transform: translate(0px, 0px);
 	color: var(--error-red);
 	font-size: 14px;
+}
+
+@media (min-width: 1025px) {
+	.main{
+		padding: 0px !important;
+		padding-top: 0px !important;
+	}
+	.formContainer{
+		width: 60%;
+		padding: 10px 100px 0px 80px;
+	}
+	.form{
+		padding: 0px 80px 0px 80px;
+	}
+	.formGroup{
+		margin-bottom: 25px;
+	}
+	.formInput {
+		padding: 5px 0px 5px 20px;
+		font-size: 13px;
+	}
+	.formError{	
+		transform: translate(0px, 52px);
+	}
+	.formErrorCheckbox{
+		transform: translate(0px, 0px);
+	}
+	.formLabel,
+	.formLabelCheckbox,
+	.formErrorCheckbox {
+		font-size: 13px;
+	}
+}
+@media (min-width: 768px) {
+	.main{
+		padding: 10px 180px;		
+		padding-top: 20%;
+	}
 }

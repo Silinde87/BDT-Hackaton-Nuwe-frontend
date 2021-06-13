@@ -3,6 +3,7 @@ import Button from "../../components/Button/Button";
 import NavBar from "../../components/NavBar/NavBar";
 import SecureLabelInfo from "../../components/SecureLabelInfo/SecureLabelInfo";
 import Title from "../../components/Title/Title";
+import FrontInfoText from "../../components/FrontInfoText/FrontInfoText";
 import styles from "../../styles/Register.module.css";
 import { showErrorMessage, showSucessMessage } from "../../utils/handleToast";
 import router from "next/router";
@@ -57,44 +58,47 @@ export default function CardRegPage() {
 	};
 	return (
 		<main className={styles.main}>
-			<NavBar step={"03"} page={"Verificación por tarjeta"} href={"/register/localization"} />
-			<Title
-				title={"Completa tu perfil!"}
-				label={`Para poder revisar que se trata de una cuenta real, 
-                    necesitamos la siguiente información`}
-			/>
-			<form onSubmit={handleSubmit}>
-				<div className={styles.formGroup}>
-					<label htmlFor="cardNumber" className={styles.formLabel}>
-						Número de tarjeta
-					</label>
-					<input
-						type="number"
-						onChange={handleChange}
-						name="cardNumber"
-						autoComplete="off"
-						className={styles.formInput}
-						placeholder="1234 1234 1234 1234"
-					></input>
-					{errors.cardNumber && <p className={styles.formError}>{errors.cardNumber}</p>}
-				</div>
-				<div className={styles.formGroup}>
-					<label htmlFor="secretCode" className={styles.formLabel}>
-						Código secreto
-					</label>
-					<input
-						type="text"
-						onChange={handleChange}
-						name="secretCode"
-						autoComplete="off"
-						className={styles.formInput}
-						placeholder="CVC"
-					></input>
-					{errors.secretCode && <p className={styles.formError}>{errors.secretCode}</p>}
-				</div>
-				<Button type={"submit"} text={"Guardar y continuar"} />
-			</form>
-			<SecureLabelInfo />
+			<FrontInfoText />
+			<section className={styles.formContainer}>
+				<NavBar step={"03"} page={"Verificación por tarjeta"} href={"/register/localization"} />
+				<Title
+					title={"Completa tu perfil!"}
+					label={`Para poder revisar que se trata de una cuenta real, 
+						necesitamos la siguiente información`}
+				/>
+				<form onSubmit={handleSubmit} className={styles.form}>
+					<div className={styles.formGroup}>
+						<label htmlFor="cardNumber" className={styles.formLabel}>
+							Número de tarjeta
+						</label>
+						<input
+							type="number"
+							onChange={handleChange}
+							name="cardNumber"
+							autoComplete="off"
+							className={styles.formInput}
+							placeholder="1234 1234 1234 1234"
+						></input>
+						{errors.cardNumber && <p className={styles.formError}>{errors.cardNumber}</p>}
+					</div>
+					<div className={styles.formGroup}>
+						<label htmlFor="secretCode" className={styles.formLabel}>
+							Código secreto
+						</label>
+						<input
+							type="text"
+							onChange={handleChange}
+							name="secretCode"
+							autoComplete="off"
+							className={styles.formInput}
+							placeholder="CVC"
+						></input>
+						{errors.secretCode && <p className={styles.formError}>{errors.secretCode}</p>}
+					</div>
+					<Button type={"submit"} text={"Guardar y continuar"} />
+				</form>
+				<SecureLabelInfo />
+			</section>
 		</main>
 	);
 }

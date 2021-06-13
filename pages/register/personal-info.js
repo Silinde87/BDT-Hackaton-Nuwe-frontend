@@ -3,6 +3,7 @@ import Button from "../../components/Button/Button";
 import GoogleButton from "../../components/GoogleButton/GoogleButton";
 import NavBar from "../../components/NavBar/NavBar";
 import Title from "../../components/Title/Title";
+import FrontInfoText from "../../components/FrontInfoText/FrontInfoText";
 import styles from "../../styles/Register.module.css";
 import { saveUser } from "../../utils/handleUser";
 import { showErrorMessage } from "../../utils/handleToast";
@@ -31,11 +32,11 @@ const validators = {
 		else if (value.length < 6) message = "Debe tener al menos 6 carácteres.";
 		return message;
 	},
-	conditions: (value) => {		
+	conditions: (value) => {
 		let message;
-		if(!value) message = "Debes aceptar los términos";
+		if (!value) message = "Debes aceptar los términos";
 		return message;
-	}
+	},
 };
 
 export default function PersonalInfoRegPage() {
@@ -44,7 +45,7 @@ export default function PersonalInfoRegPage() {
 	const router = useRouter();
 
 	//Returns if there is an error on any input
-	const isValid = () => {		
+	const isValid = () => {
 		return !Object.keys(errors).some((key) => errors[key] !== undefined);
 	};
 
@@ -52,10 +53,10 @@ export default function PersonalInfoRegPage() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const { name, email, password, conditions } = fields;
-		if (isValid()) {			
-			if (saveUser(name, email, password)) {				
+		if (isValid()) {
+			if (saveUser(name, email, password)) {
 				router.push("/register/localization");
-			} else {				
+			} else {
 				showErrorMessage(
 					"El correo electrónico introducido ya está en uso. Por favor, utiliza otro.",
 					"❌"
@@ -70,7 +71,7 @@ export default function PersonalInfoRegPage() {
 	const handleChange = (e) => {
 		let { name, value } = e.target;
 
-		if(e.target.type === "checkbox") value = e.target.checked;
+		if (e.target.type === "checkbox") value = e.target.checked;
 
 		setFields({
 			...fields,
@@ -84,69 +85,78 @@ export default function PersonalInfoRegPage() {
 
 	return (
 		<main className={styles.main}>
-			<NavBar step={"01"} page={"Personal Info."} href={"/"} />
-			<Title
-				title={"Registra tu cuenta individual"}
-				label={`Para poder revisar que se trata de una cuenta real, 
-                    necesitamos la siguiente información`}
-			/>
-			<div className={styles.formSeparator}></div>
-			<form onSubmit={handleSubmit}>
-				<div className={styles.formGroup}>
-					<label htmlFor="name" className={styles.formLabel}>
-						Nombre completo
-					</label>
-					<input
-						type="text"
-						placeholder="Introduce tu nombre"
-						onChange={handleChange}
-						name="name"
-						autoComplete="off"
-						className={styles.formInput}
-					></input>
-					{errors.name && <p className={styles.formError}>{errors.name}</p>}
+			<FrontInfoText />
+			<section className={styles.formContainer}>
+				<NavBar step={"01"} page={"Personal Info."} href={"/"} />
+				<Title
+					title={"Registra tu cuenta individual"}
+					label={`Para poder revisar que se trata de una cuenta real, 
+						necesitamos la siguiente información`}
+				/>
+				<div className={styles.formSeparator}></div>
+				<form onSubmit={handleSubmit} className={styles.form}>
+					<div className={styles.formGroup}>
+						<label htmlFor="name" className={styles.formLabel}>
+							Nombre completo
+						</label>
+						<input
+							type="text"
+							placeholder="Introduce tu nombre"
+							onChange={handleChange}
+							name="name"
+							autoComplete="off"
+							className={styles.formInput}
+						></input>
+						{errors.name && <p className={styles.formError}>{errors.name}</p>}
+					</div>
+					<div className={styles.formGroup}>
+						<label htmlFor="email" className={styles.formLabel}>
+							Dirección Email
+						</label>
+						<input
+							type="email"
+							placeholder="Introduce tu email"
+							onChange={handleChange}
+							name="email"
+							autoComplete="off"
+							className={styles.formInput}
+						></input>
+						{errors.email && <p className={styles.formError}>{errors.email}</p>}
+					</div>
+					<div className={styles.formGroup}>
+						<label htmlFor="password" className={styles.formLabel}>
+							Contraseña
+						</label>
+						<input
+							type="password"
+							placeholder="Introduce tu constraseña"
+							onChange={handleChange}
+							name="password"
+							autoComplete="off"
+							className={styles.formInput}
+						></input>
+						{errors.password && <p className={styles.formError}>{errors.password}</p>}
+					</div>
+					<div className={styles.formCheckGroup}>
+						<input
+							type="checkbox"
+							id="check-conditions"
+							name="conditions"
+							onChange={handleChange}
+							className={styles.checkbox}
+						/>
+						<label htmlFor="check-conditions" className={styles.formLabelCheckbox}>
+							Acepto los términos y condiciones
+						</label>
+						{errors.conditions && <p className={styles.formErrorCheckbox}>{errors.conditions}</p>}
+					</div>
+					<Button type={"submit"} text={"Registrar cuenta"} />
+				</form>
+				<div className={styles.formSeparator}>
+					<span className={styles.formSeparatorLabel}>O</span>
 				</div>
-				<div className={styles.formGroup}>
-					<label htmlFor="email" className={styles.formLabel}>
-						Dirección Email
-					</label>
-					<input
-						type="email"
-						placeholder="Introduce tu email"
-						onChange={handleChange}
-						name="email"
-						autoComplete="off"
-						className={styles.formInput}
-					></input>
-					{errors.email && <p className={styles.formError}>{errors.email}</p>}
-				</div>
-				<div className={styles.formGroup}>
-					<label htmlFor="password" className={styles.formLabel}>
-						Contraseña
-					</label>
-					<input
-						type="password"
-						placeholder="Introduce tu constraseña"
-						onChange={handleChange}
-						name="password"
-						autoComplete="off"
-						className={styles.formInput}
-					></input>
-					{errors.password && <p className={styles.formError}>{errors.password}</p>}
-				</div>
-				<div className={styles.formCheckGroup}>
-					<input type="checkbox" id="check-conditions" name="conditions" onChange={handleChange} />
-					<label htmlFor="check-conditions" className={styles.formLabelCheckbox}>
-						Acepto los términos y condiciones
-					</label>
-					{errors.conditions && <p className={styles.formErrorCheckbox}>{errors.conditions}</p>}
-				</div>
-				<Button type={"submit"} text={"Registrar cuenta"} />
-			</form>
-			<div className={styles.formSeparator}>
-				<span className={styles.formSeparatorLabel}>O</span>
-			</div>
-			<GoogleButton />
+				<GoogleButton />
+			</section>
 		</main>
 	);
 }

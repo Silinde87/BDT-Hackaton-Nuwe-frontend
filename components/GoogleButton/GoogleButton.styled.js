@@ -8,6 +8,7 @@ const SCGoogleButton = styled.div`
 	height: 50px;
 	padding: 0px 20px;
 	transition: box-shadow 0.218s ease;
+	cursor: pointer;
 
 	&:hover {
 		box-shadow: 0 0 3px 3px rgb(95, 145, 83, 30%);
@@ -22,6 +23,12 @@ const SCGoogleButton = styled.div`
 		margin: auto;
 		margin-left: 45px;
 		color: black;
+	}
+
+	@media (min-width: 1025px) {
+		width: 318px;
+		margin: auto;
+		height: 35px;
 	}
 `;
 
