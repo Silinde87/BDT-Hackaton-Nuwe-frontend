@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import HomeCard from "../components/HomeCard/HomeCard";
 import Title from "../components/Title/Title";

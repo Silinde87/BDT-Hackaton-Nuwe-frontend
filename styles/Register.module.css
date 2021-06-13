@@ -64,6 +64,12 @@
 	color: var(--error-red);
 	font-size: 14px;
 }
+.eyePassword{		
+	transform: translate(280px, -31px);
+	width: fit-content;
+	cursor: pointer;
+	filter: invert(65%) sepia(6%) saturate(835%) hue-rotate(180deg) brightness(88%) contrast(90%);
+}
 
 @media (min-width: 1025px) {
 	.main{
@@ -99,6 +105,9 @@
 		width: 300px;
 		margin: 17px auto;
 	}
+	.eyePassword{
+		transform: translate(250px, -21px) !important;
+	}
 }
 @media (min-width: 768px) {
 	.main{
@@ -109,5 +118,8 @@
 		padding: 0;
 		width: 280px;
 		margin: auto;
+	}
+	.eyePassword{		
+		transform: translate(250px, -31px);
 	}
 }

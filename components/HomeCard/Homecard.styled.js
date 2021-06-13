@@ -28,9 +28,11 @@ const SCHomeCard = styled.div`
 		justify-content: center;
 	}
 	.arrow-container {
-        display: none;
+        opacity: 0;
 		width: 10%; 
-        filter: invert(52%) sepia(9%) saturate(1852%) hue-rotate(63deg) brightness(96%) contrast(90%);       
+        filter: invert(52%) sepia(9%) saturate(1852%) hue-rotate(63deg) brightness(96%) contrast(90%);
+		padding-right: 20px;
+		transition: opacity 0.3s;
 	}
 
 	.text-container h4 {
@@ -45,10 +47,12 @@ const SCHomeCard = styled.div`
 	@media (min-width: 1025px) {
 		.arrow-container {
 			width: 10%;
+			opacity: 1;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 		}
+		
 	}
 `;
 
