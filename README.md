@@ -3,7 +3,19 @@ BDT Hackaton assignment frontend in which you are asked to develop a form with e
 
 Built with ``` ReactJS & NextJS``` and deployed in ```Vercel```.
 
+
+## How it looks
+
 🔗 [Live Demo](https://bdt-hackaton-nuwe-frontend.vercel.app/)
+
+<a href="https://github.com/Silinde87/repo-media/blob/main/images/screen1-bdthackaton.png?raw=true" target="_blank">
+<img src="https://github.com/Silinde87/repo-media/blob/main/images/screen1-bdthackaton.png?raw=true" width="288px" height="139px">
+</a>
+
+<a href="https://github.com/Silinde87/repo-media/blob/main/images/screen2-bdthackaton.png?raw=true" target="_blank">
+<img src="https://github.com/Silinde87/repo-media/blob/main/images/screen2-bdthackaton.png?raw=true" width="288px" height="139px">
+</a>
+
 
 
 ## 1- Download
@@ -62,6 +74,7 @@ GET | "/register/card" | Third step of registration Page
     ├── resources               # Resources provided by the hackathon.
     ├── styles                  # Global and pages styles
     ├── utils                   # Support functions and tools
+    ├── tests                   # Unit components tests
     ├── countries.json
     ├── package.json    
     └── README.md
