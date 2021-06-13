@@ -55,7 +55,7 @@ export default function PersonalInfoRegPage() {
 		const { name, email, password, conditions } = fields;
 		if (isValid()) {
 			if (saveUser(name, email, password)) {
-				router.push("/register/localization");
+				router.push("/register/location");
 			} else {
 				showErrorMessage(
 					"El correo electrónico introducido ya está en uso. Por favor, utiliza otro.",

@@ -31,7 +31,7 @@ const validators = {
 	},
 };
 
-export default function LocalizationRegPage() {
+export default function LocationRegPage() {
 	const [fields, setFields] = useState({ phone: "", address: "", country: "" });
 	const [errors, setErrors] = useState({ phone: null, address: null, country: null });
 	const router = useRouter();

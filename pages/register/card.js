@@ -60,7 +60,7 @@ export default function CardRegPage() {
 		<main className={styles.main}>
 			<FrontInfoText />
 			<section className={styles.formContainer}>
-				<NavBar step={"03"} page={"Verificación por tarjeta"} href={"/register/localization"} />
+				<NavBar step={"03"} page={"Verificación por tarjeta"} href={"/register/location"} />
 				<Title
 					title={"Completa tu perfil!"}
 					label={`Para poder revisar que se trata de una cuenta real, 

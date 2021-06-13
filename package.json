@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "npm i && next build && next start"
   },
   "dependencies": {
     "jssha": "^3.2.0",
