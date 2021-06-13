@@ -31,9 +31,6 @@ const SCGoogleButton = styled.div`
 		margin: auto;
 		height: 35px;
 	}
-	@media (min-width: 768px) {
-	
-	}
 `;
 
 export default SCGoogleButton;

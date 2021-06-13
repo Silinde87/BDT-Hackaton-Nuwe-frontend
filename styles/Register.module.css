@@ -95,6 +95,10 @@
 	.formErrorCheckbox {
 		font-size: 13px;
 	}
+	.formSeparator{
+		width: 300px;
+		margin: 17px auto;
+	}
 }
 @media (min-width: 768px) {
 	.main{
