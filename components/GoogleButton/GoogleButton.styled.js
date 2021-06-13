@@ -26,7 +26,7 @@ const SCGoogleButton = styled.div`
 	}
 
 	@media (min-width: 1025px) {
-		width: 318px;
+		width: 400px;
 		margin: auto;
 		height: 35px;
 	}
