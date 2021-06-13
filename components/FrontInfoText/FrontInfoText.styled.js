@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 const SCFrontInfoText = styled.section`
 	background-image: url("/images/Background.png");
+	background-repeat: no-repeat;
+	background-size: cover;
 	box-shadow: inset 0 0 0 1000px rgba(95,145,83,.9);
 	width: 40%;
 	height: 100vh;
