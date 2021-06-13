@@ -75,7 +75,7 @@
 		padding: 10px 100px 0px 80px;
 	}
 	.form{
-		padding: 0px 150px 0px 150px;
+		padding: 0px 150px 0px 160px;
 	}
 	.formGroup{
 		margin-bottom: 25px;
@@ -98,7 +98,12 @@
 }
 @media (min-width: 768px) {
 	.main{
-		padding: 10px 220px;		
+		padding: 10px 180px;		
 		padding-top: 20%;
+	}
+	.form{
+		padding: 0;
+		width: 280px;
+		margin: auto;
 	}
 }

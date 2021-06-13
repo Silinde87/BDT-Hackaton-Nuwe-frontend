@@ -23,12 +23,16 @@ const SCGoogleButton = styled.div`
 		margin: auto;
 		margin-left: 45px;
 		color: black;
+		font-size: 13px;
 	}
 
-	@media (min-width: 1025px) {
-		width: 400px;
+	@media (min-width: 768px) {
+		width: 280px;
 		margin: auto;
 		height: 35px;
+	}
+	@media (min-width: 768px) {
+	
 	}
 `;
 
